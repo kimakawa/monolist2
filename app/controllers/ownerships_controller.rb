@@ -9,7 +9,7 @@ class OwnershipsController < ApplicationController
       p @item.inspect
     else
       # logger.debug("if params[:item_code] is #{params[:item_code]} =======")
-      @item = Item.find(params[:item_code])
+      @item = Item.find(params[:item_id])
     end
 
     # itemsテーブルに存在しない場合は楽天のデータを登録する。
@@ -45,12 +45,12 @@ class OwnershipsController < ApplicationController
     # params[:type]の値にHave itボタンが押された時には「Have」,
     # Want itボタンが押された時には「Want」が設定されています。
     if params[:type] == "Want"
-      want = current_user.want_items.find(params[:item_code])
-      @item = want.item_id
+      # want = current_user.want_items.find(params[:item_code])
+      # @item = want.item_id
       current_user.unwant(@item)
     elsif params[:type] == "Have"
-      have = current_user.have_items.find(params[:item_code])
-      @item = have.item_id
+      # have = current_user.have_items.find(params[:item_code])
+      # @item = have.item_id
       current_user.unhave(@item)
     end
   end

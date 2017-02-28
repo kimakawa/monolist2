@@ -56,11 +56,11 @@ class User < ActiveRecord::Base
   end
 
   def unwant(item)
-    want = haves.find_by(item_id: item.id)
+    want = wants.find_by(item_id: item.id)
     want.destroy if want 
   end
 
   def want?(item)
-    wants_items.include?(item)
+    want_items.include?(item)
   end
 end
