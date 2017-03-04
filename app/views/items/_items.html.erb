@@ -6,13 +6,6 @@
           <div class="img-wrap">
             <% if item['imageFlag'] == 1 %>
               <%= image_tag(item['mediumImageUrls'].first['imageUrl'].gsub('?_ex=128x128', ''), alt: item['itemName']) %>
-<%
-=begin
-%>
-              <%= logger.debug(item['itemName']) %>
-<%
-=end
-%>
             <% else %>
               <%= image_tag("no-image.png" , alt: item['itemName']) %>
             <% end %>
