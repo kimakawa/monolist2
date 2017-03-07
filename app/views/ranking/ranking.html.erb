@@ -1,0 +1,11 @@
+<h1><%= @title %></h1>
+
+<div class="container">
+  <div class="container-inner inner-default clearfix">
+    <% @items.each.with_index(1) do |item, index| %>
+      <div class="item-box">
+        <%= render 'items/item_img' , item: item, index: index %>
+      </div>
+    <% end %>
+  </div>
+</div>

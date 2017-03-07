@@ -1,15 +1,19 @@
+<% content_for(:head) do %>
+ <title><%= @item.title %> - monolist</title>
+ <meta name="description" content="<%= @item.title %>に関する情報です。この商品を欲しい人、持ってる人を表示しています。">
+<% end %>
 <div class="container">
   <div class="container-inner inner-sm clearfix">
     <div class="item-single-main">
       <div class="image">
         <div class="img-wrap">
-          <% #TODO 商品イメージ %>
-          <%= image_tag("no-image.png" , alt: @item.title) %>
+          <% #TODO 商品イメージ -> 完了 %>
+          <%= image_tag(@item.large_image , alt: @item.title) %>
         </div>
       </div>
       <div class="title">
-        <% #TODO 商品タイトル %>
-        仮タイトル
+        <% #TODO 商品タイトル -> 完了 %>
+        <%= @item.title %>
       </div>
       <%= render 'action' , item: @item %>
     </div>
@@ -17,19 +21,26 @@
       <div class="side-box">
         <h4 class="side-box-title">Haveしたユーザー</h4>
         <div class="side-box-body">
-          <% # TODO Haveしたユーザー一覧 %>
-
+          <% # TODO Haveしたユーザー一覧 -> 完了 %>
+          <% @item.have_users.each do |user| %>
+            <div class="have_users">
+              <%= link_to (gravatar_for user, size: 20), user %>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class="side-box">
         <h4 class="side-box-title">Wantしたユーザー</h4>
         <div class="side-box-body">
-          <% # TODO Wantしたユーザー一覧 %>
+          <% # TODO Wantしたユーザー一覧 -> 完了 %>
+          <% @item.want_users.each do |user| %>
+            <%= link_to (gravatar_for user, size: 20), user %>
+          <% end %>
         </div>
       </div>
       <div class="text-center">
-        <% #TODO 正しいリンク先に %>
-        <%= link_to('楽天詳細ページへ', '#') %>
+        <% #TODO 正しいリンク先に -> 完了 %>
+        <%= link_to('楽天詳細ページへ', @item.detail_page_url) %>
       </div>
     </div>
   </div>

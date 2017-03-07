@@ -1,0 +1,19 @@
+<div class="image">
+  <div class="img-wrap">
+    <% if item.large_image.present? %>
+      <%= image_tag(item.large_image , alt: item.title) %>
+    <% else %>
+      <%= image_tag("no-image.png" , alt: item.title) %>
+    <% end %>
+  </div>
+</div>
+<div class="detail">
+  <p class="title">
+    <% if params[:controller] == "ranking" %>
+      <span style="color:red;"><%= index %>位</span>：<%= item.title %>
+    <% else %>
+      <%= item.title %>
+    <% end %>
+  </p>
+</div>
+<%= render 'items/action' , item: item if logged_in? %>
